@@ -35,8 +35,10 @@ function playRound(playerChoice, computerChoice) {
         playerChoice == "scissors" && computerChoice == "rock"
     ) { // Computer Wins
         alert(`You Lost! ${capitalizeFirstLetter(computerChoice)} Beats ${capitalizeFirstLetter(playerChoice)}`);
+        computerScore++;
     } else { // Player Wins
         alert(`You Won! ${capitalizeFirstLetter(playerChoice)} Beats ${capitalizeFirstLetter(computerChoice)}`);
+        playerScore++;
     }
 }
 
@@ -46,3 +48,4 @@ let computerScore = 0;
 let computerChoice = getComputerChoice();
 let playerChoice = getPlayerChoice();
 playRound(playerChoice, computerChoice)
+console.log(playerScore, computerScore)
