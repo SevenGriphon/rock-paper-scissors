@@ -26,26 +26,33 @@ function capitalizeFirstLetter(string) {
     return string
 }
 
-function playRound(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice){ // Tie
-        alert("Tie!");
-    } else if (
-        playerChoice == "rock" && computerChoice == "paper" ||
-        playerChoice == "paper" && computerChoice == "scissors" ||
-        playerChoice == "scissors" && computerChoice == "rock"
-    ) { // Computer Wins
-        alert(`You Lost! ${capitalizeFirstLetter(computerChoice)} Beats ${capitalizeFirstLetter(playerChoice)}`);
-        computerScore++;
-    } else { // Player Wins
-        alert(`You Won! ${capitalizeFirstLetter(playerChoice)} Beats ${capitalizeFirstLetter(computerChoice)}`);
-        playerScore++;
+
+function playGame() {
+    function playRound(playerChoice, computerChoice) {
+        if (playerChoice === computerChoice){ // Tie
+            alert("Tie!");
+        } else if (
+            playerChoice == "rock" && computerChoice == "paper" ||
+            playerChoice == "paper" && computerChoice == "scissors" ||
+            playerChoice == "scissors" && computerChoice == "rock"
+        ) { // Computer Wins
+            alert(`You Lost! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(playerChoice)}`);
+            computerScore++;
+        } else { // Player Wins
+            alert(`You Won! ${capitalizeFirstLetter(playerChoice)} beats ${capitalizeFirstLetter(computerChoice)}`);
+            playerScore++;
+        }
     }
+    
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        playRound(getPlayerChoice(), getComputerChoice())
+        console.log(playerScore, computerScore)
+    }
+
+    alert(`Game Over! Your Score: ${playerScore}:${computerScore}`)
 }
 
-let playerScore = 0;
-let computerScore = 0;
-
-let computerChoice = getComputerChoice();
-let playerChoice = getPlayerChoice();
-playRound(playerChoice, computerChoice)
-console.log(playerScore, computerScore)
+playGame()
