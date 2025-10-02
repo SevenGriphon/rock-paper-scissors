@@ -20,5 +20,8 @@ function getPlayerChoice() {
     return choice.toLowerCase()
 }
 
+let playerScore = 0;
+let computerScore = 0;
+
 console.log(getComputerChoice())
 console.log(getPlayerChoice())
