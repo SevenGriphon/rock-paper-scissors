@@ -15,9 +15,10 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    let choice = prompt("Enter your choice (rock/paper/scissors)");
-    return choice.toLowerCase();
+function getPlayerChoice(e) {
+    let btn = e.target
+    let choice = btn.id
+    return choice
 }
 
 function capitalizeFirstLetter(string) {
@@ -26,33 +27,23 @@ function capitalizeFirstLetter(string) {
     return string
 }
 
-
-function playGame() {
-    function playRound(playerChoice, computerChoice) {
-        if (playerChoice === computerChoice){ // Tie
-            alert("Tie!");
-        } else if (
-            computerChoice == "rock" && playerChoice == "paper" ||
-            computerChoice == "paper" && playerChoice == "scissors" ||
-            computerChoice == "scissors" && playerChoice == "rock"
-        ) { // Player Wins
-            alert(`You Won! ${capitalizeFirstLetter(playerChoice)} beats ${capitalizeFirstLetter(computerChoice)}`);
-            playerScore++;
-        } else { // Computer Wins
-            alert(`You Lost! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(playerChoice)}`);
-            computerScore++;
-        }
+function playRound(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice){ // Tie
+        alert("Tie!");
+    } else if (
+        computerChoice == "rock" && playerChoice == "paper" ||
+        computerChoice == "paper" && playerChoice == "scissors" ||
+        computerChoice == "scissors" && playerChoice == "rock"
+    ) { // Player Wins
+        alert(`You Won! ${capitalizeFirstLetter(playerChoice)} beats ${capitalizeFirstLetter(computerChoice)}`);
+        playerScore++;
+    } else { // Computer Wins
+        alert(`You Lost! ${capitalizeFirstLetter(computerChoice)} beats ${capitalizeFirstLetter(playerChoice)}`);
+        computerScore++;
     }
-    
-    let playerScore = 0;
-    let computerScore = 0;
-    
-    for (let i = 0; i < 5; i++) {
-        playRound(getPlayerChoice(), getComputerChoice())
-        console.log(playerScore, computerScore)
-    }
-
-    alert(`Game Over! Your Score: ${playerScore}:${computerScore}`)
 }
 
-playGame()
+const choices = document.querySelectorAll(".choice-container button")
+choices.forEach((btn) => {
+    btn.addEventListener("click", getPlayerChoice)
+})
