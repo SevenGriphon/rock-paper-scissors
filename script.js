@@ -49,6 +49,7 @@ function playRound(e) {
     else if (result == "lose") computerScore++
 
     displayResults(result, playerChoice, computerChoice)
+    checkGameEnd()
 }
 
 function displayResults(result, playerChoice, computerChoice) {
@@ -70,6 +71,22 @@ function displayResults(result, playerChoice, computerChoice) {
 
     playerScoreDiv.textContent = `Player: ${playerScore}`
     computerScoreDiv.textContent = `Computer: ${computerScore}`
+}
+
+function checkGameEnd() {
+    if (playerScore < 5 && computerScore < 5) return
+
+    if (playerScore >= 5) {
+        roundResultDiv.textContent = 
+        `You Won! Score: ${playerScore}:${computerScore}`
+    } else if (computerScore >= 5) {
+        roundResultDiv.textContent = 
+        `You Lost! Score: ${playerScore}:${computerScore}`
+    }
+
+    choices.forEach((btn) => {
+        btn.removeEventListener("click", playRound)
+    })
 }
 
 const choices = document.querySelectorAll(".choice-container button")
