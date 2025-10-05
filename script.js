@@ -45,25 +45,31 @@ function playRound(e) {
     let computerChoice = getComputerChoice()
     let result = getRoundResult(playerChoice, computerChoice)
 
-    let fancyPlayerChoice = capitalizeFirstLetter(playerChoice)
-    let fancyComputerChoice = capitalizeFirstLetter(computerChoice)
+    if (result == "win") playerScore++
+    else if (result == "lose") computerScore++
+
+    displayResults(result, playerChoice, computerChoice)
+}
+
+function displayResults(result, playerChoice, computerChoice) {
+    playerChoice = capitalizeFirstLetter(playerChoice)
+    computerChoice = capitalizeFirstLetter(computerChoice)
     switch (result) {
         case ("win"):
             roundResultDiv.textContent = 
-            `You Won! ${fancyPlayerChoice} beats ${fancyComputerChoice}`
-            playerScore++
-            playerScoreDiv.textContent = `Player: ${playerScore}`
+            `You Won! ${playerChoice} beats ${computerChoice}`
             break
         case ("lose"):
             roundResultDiv.textContent = 
-                `You Lost! ${fancyComputerChoice} beats ${fancyPlayerChoice}`
-            computerScore++
-            computerScoreDiv.textContent = `Computer: ${computerScore}`
+                `You Lost! ${computerChoice} beats ${playerChoice}`
             break
         default:
             roundResultDiv.textContent = 
-                `Tie! Both chose ${fancyPlayerChoice}`
+                `Tie! Both chose ${playerChoice}`
     }
+
+    playerScoreDiv.textContent = `Player: ${playerScore}`
+    computerScoreDiv.textContent = `Computer: ${computerScore}`
 }
 
 const choices = document.querySelectorAll(".choice-container button")
