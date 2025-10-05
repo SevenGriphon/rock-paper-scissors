@@ -1,0 +1,23 @@
+.choice-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#rock,
+#paper,
+#scissors {
+    height: 60px;
+    width: 80px;
+}
+
+#rock {
+    background-color: gray;
+}
+
+#paper {
+    background-color: white;
+}
+
+#scissors {
+    background-color: cadetblue;
+}
