@@ -46,6 +46,14 @@
     font-weight: bold;
 }
 
+.won {
+    color: green;
+}
+
+.lost {
+    color: red;
+}
+
 .player-score {
     margin-right: auto;
 }

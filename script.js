@@ -77,9 +77,11 @@ function checkGameEnd() {
     if (playerScore < 5 && computerScore < 5) return
 
     if (playerScore >= 5) {
+        roundResultDiv.classList.add("won")
         roundResultDiv.textContent = 
         `You Won! Score: ${playerScore}:${computerScore}`
     } else if (computerScore >= 5) {
+        roundResultDiv.classList.add("lost")
         roundResultDiv.textContent = 
         `You Lost! Score: ${playerScore}:${computerScore}`
     }
